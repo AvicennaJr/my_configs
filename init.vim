@@ -5,21 +5,22 @@
 :set smarttab
 :set softtabstop=4
 :set mouse=a
-
+:set relativenumber
 call plug#begin()
 Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-fugitive'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 's1n7ax/nvim-terminal'
 Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " indent/unindent with tab/shift-tab
 nmap <Tab> >>
@@ -40,7 +41,6 @@ set viminfo='25,\"50,n~/.viminfo
 set tw=79
 set autoindent
 set smartindent
-
 set guifont=Hack_Nerd_Font_Mono:h07
 
 " enable 256 colors
@@ -50,6 +50,8 @@ set t_ut=
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
     let g:neovide_transparency=0.8
+    let g:neovide_cursor_vfx_mode = "sonicboom"
+    let g:neovide_cursor_trail_size = 0.8
 endif
 
 
@@ -93,5 +95,8 @@ require('lualine').setup {
   winbar = {},
   inactive_winbar = {},
   extensions = {},
+}
+require('toggleterm').setup {
+    open_mapping = [[<c-\>]],
 }
 END

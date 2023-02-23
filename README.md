@@ -1,3 +1,1 @@
-## Default Configuration Files
-
-- Vim
+My neovim configurations inspired by theprimeagen

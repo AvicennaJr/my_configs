@@ -9,7 +9,6 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
--- Save undos for days
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -29,3 +28,5 @@ vim.g.mapleader = " "
 
 vim.opt.completeopt = {'menuone', 'noselect', 'noinsert', 'preview'}
 vim.opt.shortmess = vim.opt.shortmess + {c = true}
+
+vim.cmd([[au BufNewFile,BufRead *.v set filetype=vlang]])

@@ -75,4 +75,19 @@ return require('packer').startup(function(use)
       end
   }
   use 'dense-analysis/ale'
+  use {
+      'ggandor/leap.nvim',
+      requires = {'tpope/vim-repeat'},
+      config = function()
+          require("leap").add_default_mappings()
+      end
+  }
+  use 'nvim-tree/nvim-web-devicons'
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+          'nvim-tree/nvim-web-devicons', -- optional
+      },
+  }
+
 end)
